@@ -87,7 +87,8 @@ public class Topic_07_Custom_Dropdown {
 	
 	@Test
 	public void TC_05_Editable() {
-		
+		driver.get("https://react.semantic-ui.com/maximize/dropdown-example-search-selection/");
+		enterToCustomDropdownList("input.search", "div[role='option']", "Belize");
 	}
 	
 	@AfterClass
