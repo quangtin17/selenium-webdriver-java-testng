@@ -16,11 +16,20 @@ import org.testng.annotations.Test;
 public class Topic_09_Button_Default_Radio_Checkbox {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
+	String osName = System.getProperty("os.name");
 	JavascriptExecutor jsExecutor;
 
 	@BeforeClass
 	public void beforeClass() {
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+		// setting chạy trên nhiều hệ điều hành 
+		if (osName.startsWith("Windows")) {
+			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		} else if (osName.startsWith("Mac")) {
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+		} else {
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver_linux");
+		}
+		
 		driver = new FirefoxDriver();
 		jsExecutor = (JavascriptExecutor) driver;
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
