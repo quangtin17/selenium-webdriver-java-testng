@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 public class Topic_01_Template {
 	WebDriver driver;
 	String projectPath = System.getProperty("user.dir");
+	String osName = System.getProperty("os.name");
 
 	@BeforeClass
 	public void beforeClass() {
@@ -20,7 +21,16 @@ public class Topic_01_Template {
 		// Selenium
 		// Java/Software/eclipse/workspace/selenium-webdriver-java-testng/browserDrivers/geckodriver");
 		// Set linh động : máy nào cũng chạy được
-		System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver");
+		// System.setProperty("webdriver.gecko.driver", projectPath +
+		// "/browserDrivers/geckodriver");
+		// setting chạy trên nhiều hệ điều hành
+		if (osName.startsWith("Windows")) {
+			System.setProperty("webdriver.gecko.driver", projectPath + "\\browserDrivers\\geckodriver.exe");
+		} else if (osName.startsWith("Mac")) {
+			System.setProperty("webdriver.chrome.driver", projectPath + "/browserDrivers/chromedriver");
+		} else {
+			System.setProperty("webdriver.gecko.driver", projectPath + "/browserDrivers/geckodriver_linux");
+		}
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 	}
