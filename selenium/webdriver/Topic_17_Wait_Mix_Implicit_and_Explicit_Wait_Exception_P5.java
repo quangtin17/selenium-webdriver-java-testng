@@ -57,6 +57,7 @@ public class Topic_17_Wait_Mix_Implicit_and_Explicit_Wait_Exception_P5 {
 		// 2 - Implicit = Explicit 
 		// 3 - Implicit > Explicit
 		// => Implicit sẽ không bị ảnh hưởng bởi bất kì 1 loại wait nào khác lên nó, nếu kh set thì mặc định bằng 0
+		// => Implicit :  dùng mục đích find element => Explicit dùng cho những trạng thái của element 
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		System.out.println("Start implicit = " + getCurrentTime());
 		driver.findElement(emailIDBy).isDisplayed();
